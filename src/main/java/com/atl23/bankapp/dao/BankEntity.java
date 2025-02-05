@@ -14,16 +14,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BankEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
-    @OneToMany(mappedBy = "bank", cascade = CascadeType.ALL)
-    private List<UserEntity>userEntities;
-
-
+    @OneToMany(mappedBy = "bankEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UserEntity> userEntityList;
 
 }

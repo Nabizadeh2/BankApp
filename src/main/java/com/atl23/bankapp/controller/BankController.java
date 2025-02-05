@@ -1,12 +1,15 @@
 package com.atl23.bankapp.controller;
-
 import com.atl23.bankapp.dao.BankEntity;
 import com.atl23.bankapp.dao.UserEntity;
+import com.atl23.bankapp.dto.BankResponseDto;
+import com.atl23.bankapp.dto.UserRequestDto;
 import com.atl23.bankapp.exception.ResourceNotFoundException;
 import com.atl23.bankapp.service.BankService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -16,25 +19,16 @@ public class BankController {
 
     private final BankService bankService;
 
-    @GetMapping
-    public List<BankEntity> getAllBanks() {
-        return bankService.getAllBanks();
+    @PostMapping("add")
+    public void addUsers(@Valid @RequestBody UserRequestDto dto){
+        bankService.addUsers(dto);
     }
-
-    @PostMapping
-    public BankEntity saveBank(@RequestBody BankEntity bankEntity) {
-        return bankService.saveBank(bankEntity);
+    @GetMapping("/get")
+    public List<BankResponseDto> getAll(){
+        return bankService.getall();
     }
-
-    @GetMapping("/{id}")
-    public BankEntity getBankById(@PathVariable Long id) {
-        return bankService.getBankById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Bank not found with id: " + id));
+    @GetMapping("/get/{id}")
+    public BankResponseDto getById(@PathVariable Long id){
+        return bankService.getById(id);
     }
-
-    @GetMapping("/{bankId}/users")
-    public List<UserEntity> getUsersByBankId(@PathVariable Long bankId) {
-        return bankService.getUsersByBankId(bankId);
-    }
-
 }

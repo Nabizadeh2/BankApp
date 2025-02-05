@@ -1,5 +1,6 @@
 package com.atl23.bankapp.dto;
 
+import com.atl23.bankapp.BankStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,6 +10,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class ErrorResponseBank {
 
-    private String errorCode;
-    private String errorMessage;
+    private BankStatus status;
+    private String message;
 }
