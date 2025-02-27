@@ -24,8 +24,6 @@ public class BankMapper {
         BankEntity entity = bankRepository.findById(id).orElseThrow( () -> new BankNotFoundException("not found by id"));
         List<UserEntity> userEntities = entity.getUserEntityList();
         List<UserResponseDto> user = new ArrayList<>();
-
-
         for(UserEntity e : userEntities){
             user.add(
                     UserResponseDto.builder().name(e.getName()).surname(e.getSurname()).build());

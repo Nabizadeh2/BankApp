@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003_create-foreign-key
+      author: Jeyhuna Nabizada
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: users
+            baseColumnNames: bank_id
+            referencedTableName: banks
+            referencedColumnNames: id
+            constraintName: fk_user_banks
+            onDelete: CASCADE
+            onUpdate: RESTRICT

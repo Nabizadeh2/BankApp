@@ -3,7 +3,6 @@ package com.atl23.bankapp.exception;
 import com.atl23.bankapp.BankStatus;
 import com.atl23.bankapp.dto.ErrorResponseBank;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;

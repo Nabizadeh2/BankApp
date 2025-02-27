@@ -9,6 +9,7 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table (name = "users")
 public class UserEntity {
 
     @Id
@@ -16,11 +17,8 @@ public class UserEntity {
     private Long id;
     private String name;
     private String surname;
-
-    private String password;
-
-    @ManyToOne
-    @JoinColumn(name = "bank_id")
-    private BankEntity bank;
+    @ManyToOne()
+    @JoinColumn(name = "bank_id",nullable = false)
+    private BankEntity bankEntity;
 
 }

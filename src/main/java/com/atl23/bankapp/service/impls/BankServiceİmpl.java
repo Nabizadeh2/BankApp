@@ -39,7 +39,7 @@ public class BankServiceİmpl implements BankService {
 
         BankEntity bank = bankRepository.findById(dto.getBankId()).orElseThrow(() -> new BankNotFoundException("not found bank"));
 
-        UserEntity entity = UserEntity.builder().name(dto.getName()).surname(dto.getSurname()).bank(bank).build();
+        UserEntity entity = UserEntity.builder().name(dto.getName()).surname(dto.getSurname()).bankEntity(bank).build();
         usersRepository.save(entity);
     }
 }
